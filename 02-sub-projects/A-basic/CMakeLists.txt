@@ -1,6 +1,16 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(subprojects)
+set(CMAKE_C_COMPILER "distcc")
+set(CMAKE_CXX_COMPILER "distcc")
+find_package(Threads REQUIRED)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
+add_executable(subbinary main.cpp)
+target_link_libraries(subbinary sublibrary1 sublibrary2 stdc++)
+
 
 # Add sub directories
 add_subdirectory(sublibrary1)
