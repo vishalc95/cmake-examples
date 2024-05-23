@@ -16,10 +16,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Add pthread flag
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
-add_executable(subbinary ${CMAKE_CURRENT_SOURCE_DIR}/subbinary/main.cpp)
+# Rename the target to avoid conflicts
+add_executable(subbinary_exec ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
 # Link libraries
-target_link_libraries(subbinary sublibrary1 sublibrary2 stdc++)
+target_link_libraries(subbinary_exec PRIVATE sublibrary1 sublibrary2 stdc++)
+
 
 
 # Add subdirectories
